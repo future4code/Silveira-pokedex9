@@ -1,4 +1,4 @@
-import pokemonLogo from './data/imagens/pokemon.png'
+
 import { Router } from './routes/Routes';
 
 function App() {
