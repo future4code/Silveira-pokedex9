@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { goToPage } from "../routes/cordinator";
 import styled from "styled-components";
 import pokemonLogo from '../data/imagens/pokemon.png'
+import useRequestData from "../hooks/RequestData";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import PokeCard from '../components/pokeCard/PokeCard'
 
 const Container = styled.div`
 
@@ -39,17 +43,28 @@ button{
 
 
 export default function HomePage() {
-    const nav = useNavigate()
+  const nav = useNavigate()
+  const [pokemons, setPokemons] = useState()
+  const [pokemonList] = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
 
-    return (
-      <Container>
-        <header>
-          <img src={pokemonLogo}/>
-          <Menu>
-            <button onClick={()=>goToPage(nav,'/pokedex')}>Pokedex</button>
-          </Menu>
-        </header>
-        <h1>HomePage</h1>
-      </Container>
-    );
-  }
+
+  const pokeCard = pokemonList && pokemonList.map((pokemon)=>{
+    return (<PokeCard
+      key={pokemon.name}
+      url={pokemon.url}
+    />)
+  })
+
+
+  return (
+    <Container>
+      <header>
+        <img src={pokemonLogo} />
+        <Menu>
+          <button onClick={() => goToPage(nav, '/pokedex')}>Pokedex</button>
+        </Menu>
+      </header>
+      {pokeCard}
+    </Container>
+  );
+}
