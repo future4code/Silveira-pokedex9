@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { goToPage } from "../routes/cordinator";
 import pokemonLogo from '../data/imagens/pokemon.png'
+import React, { useContext } from "react";
+import { ContextPokemonsUrl } from "../context/ContextPokemonsUrl";
+import PokedexCard from "../components/pokedexCards/PokedexCard";
 
 
 const Container = styled.div`
@@ -40,17 +43,28 @@ button{
 
 export default function Pokedex() {
   const nav = useNavigate()
+  const { states, setters } = useContext(ContextPokemonsUrl)
+  const { pokedex } = states;
+  const { setPokedex } = setters;
 
+
+  const renderPokedex = states.pokedex.map((pokemon) => {
     return (
-      <Container>
-        <header>
-          <img src={pokemonLogo}/>
-          <Menu>
-            <button onClick={()=>goToPage(nav,'/')}>Voltar</button>
-            <button onClick={()=>goToPage(nav,'/pokeInfo')}>Info</button>
-          </Menu>
-        </header>
-        <h1>Pokedex</h1>
-      </Container>
-    );
-  }
+      <PokedexCard key={pokemon.name} nome={pokemon.name} peso={pokemon.weight}/>
+    )
+  })
+
+  return (
+    <Container>
+      <header>
+        <img src={pokemonLogo} />
+        <Menu>
+          <button onClick={() => goToPage(nav, '/')}>Voltar</button>
+          <button onClick={() => goToPage(nav, '/pokeInfo')}>Info</button>
+        </Menu>
+      </header>
+      <h1>Pokedex</h1>
+      {renderPokedex}
+    </Container>
+  );
+}

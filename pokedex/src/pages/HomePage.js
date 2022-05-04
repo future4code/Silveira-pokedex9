@@ -3,9 +3,10 @@ import { goToPage } from "../routes/cordinator";
 import styled from "styled-components";
 import pokemonLogo from '../data/imagens/pokemon.png'
 import useRequestData from "../hooks/RequestData";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import PokeCard from '../components/pokeCard/PokeCard'
+import { ContextPokemonsUrl } from "../context/ContextPokemonsUrl";
 
 const Container = styled.div`
 
@@ -44,17 +45,37 @@ button{
 
 export default function HomePage() {
   const nav = useNavigate()
-  const [pokemons, setPokemons] = useState()
-  const [pokemonList] = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
+  const { states, setters } = useContext(ContextPokemonsUrl)
+  const pokemonList = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
 
 
-  const pokeCard = pokemonList && pokemonList.map((pokemon)=>{
+
+  const addToPokedex = (newItem) => {
+
+    const index = states.pokedex.findIndex((i) => i.name === newItem.name);
+
+    const newPokedex = [...states.pokedex];
+
+    if (index === -1) {
+      const pokedexItem = { ...newItem, amount: 1 }
+      newPokedex.push(pokedexItem)
+      console.log("Adicionado a pokedex!")
+    } else {
+      newPokedex[index] = newPokedex[index];
+    }
+
+    setters.setPokedex(newPokedex);
+  }
+
+  const pokeCard = states.pokemons && states.pokemons.map((pokemon) => {
     return (<PokeCard
-      key={pokemon.name}
-      url={pokemon.url}
+      key={pokemon.id}
+      nome={pokemon.name}
+      peso={pokemon.weight}
+      addPokedex={addToPokedex}
+      pokemon={pokemon}
     />)
   })
-
 
   return (
     <Container>
@@ -68,3 +89,9 @@ export default function HomePage() {
     </Container>
   );
 }
+
+
+// key={pokemon.name}
+      // url={pokemon.url}
+      // pokemon={pokemon}
+      // addPokedex={addToPokedex}
