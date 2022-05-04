@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { goToPage } from "../routes/cordinator";
 import pokemonLogo from '../data/imagens/pokemon.png'
 import React, { useContext } from "react";
-import { ContextPokemonsUrl } from "../context/ContextPokemonsUrl";
+
 import PokedexCard from "../components/pokedexCards/PokedexCard";
+import { GlobalStateContext } from "../context/GlobalStateContext";
 
 
 const Container = styled.div`
@@ -43,14 +44,30 @@ button{
 
 export default function Pokedex() {
   const nav = useNavigate()
-  const { states, setters } = useContext(ContextPokemonsUrl)
+  const { states, setters } = useContext(GlobalStateContext)
   const { pokedex } = states;
   const { setPokedex } = setters;
 
 
+  const RemoveFromPokedex = (poke) => {
+    const index = states.pokedex.findIndex((i) => i.name === poke.name);
+
+    const newPokedexList = [...states.pokedex]
+    newPokedexList.splice(index,1)
+
+    /* const newPokedexListOrder = newPokedexList.sort((a,b)=>{
+      return a.id-b.id
+    }) */
+    setters.setPokedex(newPokedexList)
+    const newPokeList = [...states.pokemons,poke];
+    const newPokeListOrder = newPokeList.sort((a,b)=>{
+      return a.id-b.id
+    })
+    setters.setPokemons(newPokeListOrder);
+}
   const renderPokedex = states.pokedex.map((pokemon) => {
     return (
-      <PokedexCard key={pokemon.name} nome={pokemon.name} peso={pokemon.weight}/>
+      <PokedexCard key={pokemon.id} nome={pokemon.name} peso={pokemon.weight} removePoke={RemoveFromPokedex} pokemon={pokemon}/>
     )
   })
 

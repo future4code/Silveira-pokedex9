@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { ContextPokemonsUrl } from "./ContextPokemonsUrl";
+
 import axios from "axios";
 import useRequestData from "../hooks/RequestData";
+import { GlobalStateContext } from "./GlobalStateContext";
 
 const GlobalState = (props) => {
   const [pokemons, setPokemons] = useState([]);
@@ -11,7 +12,7 @@ const GlobalState = (props) => {
 
 
   const states = { pokemons, pokedex };
-  const setters = { setPokedex };
+  const setters = { setPokemons,setPokedex };
   const requests = {};
 
   const getPokemon = async (name, array) => {
@@ -39,9 +40,9 @@ const GlobalState = (props) => {
   }, [pokemonUrl])
 
   return (
-    <ContextPokemonsUrl.Provider value={{ states, setters, requests }}>
+    <GlobalStateContext.Provider value={{ states, setters, requests }}>
       {props.children}
-    </ContextPokemonsUrl.Provider>
+    </GlobalStateContext.Provider>
   );
 };
 
