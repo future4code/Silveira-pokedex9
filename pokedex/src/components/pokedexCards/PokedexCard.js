@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { ContextPokemonsUrl } from '../../context/ContextPokemonsUrl'
+
 
 const PokedexCard = (props) => {
 
@@ -25,6 +25,7 @@ const PokedexCard = (props) => {
         <div>
             <h1>{props.nome}</h1>
             <p>weight: {props.peso}</p>
+            <button onClick={()=>props.removePoke(props.pokemon)}>Remover</button>
         </div>
     )
 }

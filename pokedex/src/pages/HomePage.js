@@ -6,7 +6,8 @@ import useRequestData from "../hooks/RequestData";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import PokeCard from '../components/pokeCard/PokeCard'
-import { ContextPokemonsUrl } from "../context/ContextPokemonsUrl";
+import { GlobalStateContext } from "../context/GlobalStateContext";
+
 
 const Container = styled.div`
 
@@ -45,26 +46,34 @@ button{
 
 export default function HomePage() {
   const nav = useNavigate()
-  const { states, setters } = useContext(ContextPokemonsUrl)
+  const { states, setters } = useContext(GlobalStateContext)
   const pokemonList = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
 
 
 
   const addToPokedex = (newItem) => {
+    const index = states.pokemons.findIndex((i) => i.name === newItem.name);
 
-    const index = states.pokedex.findIndex((i) => i.name === newItem.name);
-
-    const newPokedex = [...states.pokedex];
-
-    if (index === -1) {
+    const newPokeList = [...states.pokemons];
+    newPokeList.splice(index,1)
+    const newPokeListOrder = newPokeList.sort((a,b)=>{
+      return a.id-b.id
+    })
+    setters.setPokemons(newPokeListOrder);
+    const newPokedexList = [...states.pokedex,newItem]
+    const newPokedexListOrder = newPokedexList.sort((a,b)=>{
+      return a.id-b.id
+    })
+    setters.setPokedex(newPokedexListOrder)
+    /* if (index === -1) {
       const pokedexItem = { ...newItem, amount: 1 }
       newPokedex.push(pokedexItem)
       console.log("Adicionado a pokedex!")
     } else {
       newPokedex[index] = newPokedex[index];
-    }
+    } */
 
-    setters.setPokedex(newPokedex);
+    
   }
 
   const pokeCard = states.pokemons && states.pokemons.map((pokemon) => {
