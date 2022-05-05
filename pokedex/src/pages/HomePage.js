@@ -64,9 +64,7 @@ button{
 
 export default function HomePage() {
   const nav = useNavigate()
-  const { states, setters } = useContext(ContextPokemonsUrl)
   const { states, setters } = useContext(GlobalStateContext)
-  const pokemonList = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
 
 
 
