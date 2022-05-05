@@ -84,15 +84,7 @@ export default function HomePage() {
       return a.id-b.id
     })
     setters.setPokedex(newPokedexListOrder)
-    /* if (index === -1) {
-      const pokedexItem = { ...newItem, amount: 1 }
-      newPokedex.push(pokedexItem)
-      console.log("Adicionado a pokedex!")
-    } else {
-      newPokedex[index] = newPokedex[index];
-    } */
 
-    
   }
 
   const pokeCard = states.pokemons && states.pokemons.map((pokemon) => {
