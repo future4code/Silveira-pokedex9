@@ -8,7 +8,7 @@ const GlobalState = (props) => {
   const [pokemons, setPokemons] = useState([]);
   const [pokedex, setPokedex] = useState([]);
 
-  const pokemonUrl = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20')
+  const pokemonUrl = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=80')
 
 
   const states = { pokemons, pokedex };
@@ -19,7 +19,7 @@ const GlobalState = (props) => {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
       array.push(response.data)
-      if (array.length === 20) {
+      if (array.length === pokemonUrl.length) {
         const orderList = array.sort((a, b) => {
           return a.id - b.id
         })
