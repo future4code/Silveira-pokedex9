@@ -9,7 +9,12 @@ height: 300px;
 border-radius: 10px;
 margin: 30px;
 overflow: hidden;
-background-color: white;
+background-color: ${ props => (!props.tipo) ? 'background-color' : props.tipo };
+box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.664) ;
+
+:hover{
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.664) ;
+}
 
 img{
   width: 80%;
@@ -47,15 +52,78 @@ button{
 
 
 export default function PokeCard(props) {
-  
-console.log(props.pokemon.types[0].type.name)
+
+
+
+  const cor = (tipo) => {
+    switch (tipo) {
+      case 'fire':
+        return '#AB1F24';
+
+      case 'water':
+        return '#1552E1';
+
+      case 'grass':
+        return '#097A39';
+
+      case 'bug':
+        return '#1C4B27';
+
+      case 'dark':
+        return '#040707';
+
+      case 'dragon':
+        return '#448A95';
+
+      case 'electric':
+        return '#FAFA72';
+
+      case 'fairy':
+        return '#961A45';
+
+      case 'fighting':
+        return '#994025';
+
+      case 'flying':
+        return '#4A677D';
+
+      case 'ghost':
+        return '#33336B';
+
+      case 'ground':
+        return '#A8702D';
+
+      case 'ice':
+        return '#86D2F5';
+
+      case 'normal':
+        return '#75525C';
+
+      case 'poison':
+        return '#5E2D89';
+
+      case 'psychic':
+        return '#A52A6C';
+
+      case 'rock':
+        return '#48190B';
+
+      case 'steel':
+        return '#60756E';
+
+      default:
+        return 'white';
+    }
+
+  }
+
   return (
-    <Container tipoPokemon={props.pokemon.types[0].type.name}>
-      <img src={props.pokemon.sprites.other.dream_world.front_default}/>   
-      <h1>{props.nome}</h1>    
+    <Container tipo={cor(props.pokemon.types[0].type.name)}>
+      <img src={props.pokemon.sprites.other.dream_world.front_default} />
+      <h1>{props.nome}</h1>
       <Menu>
-      <button onClick={() => props.addPokedex(props.pokemon)}>Add Pokedex</button>
-      <button>Info</button>
+        <button onClick={() => props.addPokedex(props.pokemon)}>Add Pokedex</button>
+        <button>Info</button>
       </Menu>
     </Container>
   );
