@@ -34,6 +34,7 @@ top: 80px;
 background-color: black;
 height: 5px;
 `
+
 const Cards = styled.div`
 display: grid;
 justify-content: center;
@@ -97,8 +98,6 @@ export default function HomePage() {
   const pokeCard = states.pokemons && states.pokemons.map((pokemon) => {
     return (<PokeCard
       key={pokemon.id}
-      nome={pokemon.name}
-      peso={pokemon.weight}
       addPokedex={addToPokedex}
       pokemon={pokemon}
     />)
@@ -119,9 +118,3 @@ export default function HomePage() {
     </Container>
   );
 }
-
-
-// key={pokemon.name}
-      // url={pokemon.url}
-      // pokemon={pokemon}
-      // addPokedex={addToPokedex}

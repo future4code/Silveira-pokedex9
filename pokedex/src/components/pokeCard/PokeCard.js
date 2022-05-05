@@ -53,8 +53,6 @@ button{
 
 export default function PokeCard(props) {
 
-
-
   const cor = (tipo) => {
     switch (tipo) {
       case 'fire':

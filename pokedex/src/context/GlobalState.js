@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import axios from "axios";
 import useRequestData from "../hooks/RequestData";
 import { GlobalStateContext } from "./GlobalStateContext";
@@ -7,12 +6,13 @@ import { GlobalStateContext } from "./GlobalStateContext";
 const GlobalState = (props) => {
   const [pokemons, setPokemons] = useState([]);
   const [pokedex, setPokedex] = useState([]);
+  const [pokemonInfo, setPokemonInfo] =  useState()
 
   const pokemonUrl = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=80')
 
 
-  const states = { pokemons, pokedex };
-  const setters = { setPokemons,setPokedex };
+  const states = { pokemons, pokedex, pokemonInfo };
+  const setters = { setPokemons, setPokedex, setPokemonInfo };
   const requests = {};
 
   const getPokemon = async (name, array) => {

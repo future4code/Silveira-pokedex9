@@ -9,20 +9,29 @@ import { GlobalStateContext } from "../context/GlobalStateContext";
 
 
 const Container = styled.div`
+/* background-color: #8BB884; */
 
 header{
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
   background-color: red;
-  height: 70px;
+  height: 80px;
 
   img{
     margin-left: 20px;
     height: 100%;
   }
 }
+`
+
+const Div = styled.div`
+position: sticky;
+top: 80px;
+background-color: black;
+height: 5px;
 `
 
 const Menu = styled.div`
@@ -40,6 +49,13 @@ button{
   width: 100px;
   height: 30px;
 }
+`
+
+const Cards = styled.div`
+display: grid;
+justify-content: center;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+padding-top: 30px;
 `
 
 export default function Pokedex() {
@@ -67,7 +83,7 @@ export default function Pokedex() {
 }
   const renderPokedex = states.pokedex.map((pokemon) => {
     return (
-      <PokedexCard key={pokemon.id} nome={pokemon.name} peso={pokemon.weight} removePoke={RemoveFromPokedex} pokemon={pokemon}/>
+      <PokedexCard key={pokemon.id} removePoke={RemoveFromPokedex} pokemon={pokemon}/>
     )
   })
 
@@ -77,11 +93,13 @@ export default function Pokedex() {
         <img src={pokemonLogo} />
         <Menu>
           <button onClick={() => goToPage(nav, '/')}>Voltar</button>
-          <button onClick={() => goToPage(nav, '/pokeInfo')}>Info</button>
         </Menu>
       </header>
-      <h1>Pokedex</h1>
+      <Div></Div>
+      <div></div>
+      <Cards>
       {renderPokedex}
+      </Cards>
     </Container>
   );
 }
