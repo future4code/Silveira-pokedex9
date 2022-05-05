@@ -11,7 +11,7 @@ export function Router() {
                 <Routes>
                     <Route index element={<HomePage />} />
                     <Route path='pokedex' element={<Pokedex />} />
-                    <Route path='pokeInfo' element={<PokeInfo />} />
+                    <Route path='pokeInfo/:name/:origin' element={<PokeInfo />} />
                 </Routes>
             </BrowserRouter>
     )

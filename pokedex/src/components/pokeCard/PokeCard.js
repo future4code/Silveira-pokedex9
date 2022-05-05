@@ -47,12 +47,12 @@ button{
 
 
 export default function PokeCard(props) {
-  
-console.log(props.pokemon.types[0].type.name)
+
+
   return (
     <Container tipoPokemon={props.pokemon.types[0].type.name}>
       <img src={props.pokemon.sprites.other.dream_world.front_default}/>   
-      <h1>{props.nome}</h1>    
+      <h1>{props.pokemon.name}</h1>    
       <Menu>
       <button onClick={() => props.addPokedex(props.pokemon)}>Add Pokedex</button>
       <button>Info</button>
