@@ -8,15 +8,17 @@ import axios from "axios";
 import PokeCard from '../components/pokeCard/PokeCard'
 import { ContextPokemonsUrl } from "../context/ContextPokemonsUrl";
 
+
 const Container = styled.div`
 
 header{
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
   background-color: red;
-  height: 70px;
+  height: 80px;
 
   img{
     margin-left: 20px;
@@ -24,6 +26,21 @@ header{
   }
 }
 `
+
+const Div = styled.div`
+position: sticky;
+top: 80px;
+background-color: black;
+height: 5px;
+`
+const Cards = styled.div`
+display: grid;
+justify-content: center;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+background-color: #8BB884;
+padding-top: 30px;
+`
+
 
 const Menu = styled.div`
 display: flex;
@@ -39,6 +56,7 @@ button{
   color: #15468D;
   width: 100px;
   height: 30px;
+  cursor: pointer;
 }
 `
 
@@ -46,7 +64,6 @@ button{
 export default function HomePage() {
   const nav = useNavigate()
   const { states, setters } = useContext(ContextPokemonsUrl)
-  const pokemonList = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=20/')
 
 
 
@@ -85,7 +102,10 @@ export default function HomePage() {
           <button onClick={() => goToPage(nav, '/pokedex')}>Pokedex</button>
         </Menu>
       </header>
+      <Div></Div>
+      <Cards>
       {pokeCard}
+      </Cards>    
     </Container>
   );
 }
