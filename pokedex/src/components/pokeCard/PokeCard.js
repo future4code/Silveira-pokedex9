@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { goToPage } from "../../routes/cordinator";
+import { GlobalStateContext } from "../../context/GlobalStateContext"
+import { useContext } from "react";
+
 
 const Container = styled.div`
 display: flex;
@@ -52,6 +57,8 @@ button{
 
 
 export default function PokeCard(props) {
+  const { states, setters } = useContext(GlobalStateContext)
+  const nav = useNavigate()
 
   const cor = (tipo) => {
     switch (tipo) {
@@ -115,13 +122,22 @@ export default function PokeCard(props) {
 
   }
 
+  const rendDetail = (name) => {
+    goToPage(nav, `/pokeInfo/${name}/${"home"}`)
+    console.log(name)
+}
+
+const SetInfo = (info) => {
+  setters.setPokemonInfo(info)
+}
+
   return (
     <Container tipo={cor(props.pokemon.types[0].type.name)}>
       <img src={props.pokemon.sprites.other.dream_world.front_default} />
       <h1>{props.pokemon.name}</h1>
       <Menu>
         <button onClick={() => props.addPokedex(props.pokemon)}>Add Pokedex</button>
-        <button>Info</button>
+        <button onClick={() => {rendDetail(props.pokemon.name); SetInfo(props.pokemon)}}>Info</button>
       </Menu>
     </Container>
   );

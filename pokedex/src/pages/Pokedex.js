@@ -9,7 +9,6 @@ import { GlobalStateContext } from "../context/GlobalStateContext";
 
 
 const Container = styled.div`
-/* background-color: #8BB884; */
 
 header{
   display: flex;
@@ -48,6 +47,7 @@ button{
   color: #15468D;
   width: 100px;
   height: 30px;
+  cursor: pointer;
 }
 `
 
@@ -71,9 +71,6 @@ export default function Pokedex() {
     const newPokedexList = [...states.pokedex]
     newPokedexList.splice(index,1)
 
-    /* const newPokedexListOrder = newPokedexList.sort((a,b)=>{
-      return a.id-b.id
-    }) */
     setters.setPokedex(newPokedexList)
     const newPokeList = [...states.pokemons,poke];
     const newPokeListOrder = newPokeList.sort((a,b)=>{
@@ -92,11 +89,10 @@ export default function Pokedex() {
       <header>
         <img src={pokemonLogo} />
         <Menu>
-          <button onClick={() => goToPage(nav, '/')}>Voltar</button>
+          <button onClick={() => goToPage(nav, '/')}>Home</button>
         </Menu>
       </header>
       <Div></Div>
-      <div></div>
       <Cards>
       {renderPokedex}
       </Cards>
