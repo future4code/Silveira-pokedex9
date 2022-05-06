@@ -19,9 +19,21 @@ header{
   background-color: red;
   height: 80px;
 
-  img{
+  .logo{
     margin-left: 20px;
     height: 100%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  header{
+    height: 120px;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .logo{
+    margin-right: 20px;
+    max-height: 50%;
   }
 }
 `
@@ -31,6 +43,10 @@ position: sticky;
 top: 80px;
 background-color: black;
 height: 5px;
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  top:120px;
+}
 `
 
 const Menu = styled.div`
@@ -49,6 +65,10 @@ button{
   height: 30px;
   cursor: pointer;
 }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  margin-right: 0px;
+}
 `
 
 const Cards = styled.div`
@@ -56,6 +76,10 @@ display: grid;
 justify-content: center;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 padding-top: 30px;
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    grid-template-columns: 1fr;
+}
 `
 
 export default function Pokedex() {
@@ -87,7 +111,7 @@ export default function Pokedex() {
   return (
     <Container>
       <header>
-        <img src={pokemonLogo} />
+        <img className="logo" src={pokemonLogo} />
         <Menu>
           <button onClick={() => goToPage(nav, '/')}>Home</button>
         </Menu>
