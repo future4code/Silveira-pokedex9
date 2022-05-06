@@ -8,7 +8,7 @@ const GlobalState = (props) => {
   const [pokedex, setPokedex] = useState([]);
   const [pokemonInfo, setPokemonInfo] =  useState()
 
-  const pokemonUrl = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=80')
+  const pokemonUrl = useRequestData('https://pokeapi.co/api/v2/pokemon?limit=50')
 
 
   const states = { pokemons, pokedex, pokemonInfo };
