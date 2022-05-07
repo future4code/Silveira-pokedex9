@@ -5,14 +5,14 @@ Nome dos integrantes:
 - Alex
 - João
 
-Link do Surge: https://pokedex9.surge.sh/
+Link do Surge: https://silveirapokedex9.surge.sh/pokedex
 
 O que funciona:
 - Logica Global State
 - Logica Botoes remover/add
 - responsividade
 - estilização
+- Paginação 
 
 O que não funciona: 
-- Paginação nao foi adicionada
 - Não é possivel atualizar a pág de Info, volta para a home page
