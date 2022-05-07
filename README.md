@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Alex
 - João
 
-Link do Surge: https://silveirapokedex9.surge.sh/pokedex
+Link do Surge: https://silveirapokedex9.surge.sh/
 
 O que funciona:
 - Logica Global State
