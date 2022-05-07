@@ -7,7 +7,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import PokeCard from '../components/pokeCard/PokeCard'
 import { GlobalStateContext } from "../context/GlobalStateContext";
-
+import Pagination from "../pagination";
 
 
 const Container = styled.div`
@@ -25,9 +25,10 @@ header{
     margin-left: 20px;
     height: 100%;
   }
+
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   header{
     height: 120px;
     flex-direction: column;
@@ -47,7 +48,7 @@ top: 80px;
 background-color: black;
 height: 5px;
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   top:120px;
 }
 `
@@ -59,14 +60,14 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 background-color: #8BB884;
 padding-top: 30px; */
 
-
-/* @media screen and (min-width: 320px) and (max-width: 480px) {
-    grid-template-columns: 1fr;
-} */
-
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 `
 
 
@@ -87,7 +88,7 @@ button{
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   margin-right: 0px;
 }
 `
@@ -96,6 +97,7 @@ button{
 export default function HomePage() {
   const nav = useNavigate()
   const { states, setters } = useContext(GlobalStateContext)
+  const [offSet,setOffSet] = useState(0)
 
 
 
@@ -124,7 +126,6 @@ export default function HomePage() {
       pokemon={pokemon}
     />)
   })
-
   return (
     <Container>
       <header>
@@ -135,8 +136,15 @@ export default function HomePage() {
       </header>
       <Div></Div>
       <Cards className="cards">
-        {pokeCard}
-      </Cards>    
+        {pokeCard.slice(offSet, offSet + 8)}
+      </Cards> 
+      <Pagination
+      className="pagination"
+      limit={32}
+      total={states.pokemons.length}
+      offSet={offSet}
+      setOffSet={setOffSet}
+      />
     </Container>
   );
 }

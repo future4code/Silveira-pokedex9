@@ -24,7 +24,7 @@ header{
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   header{
     height: 120px;
     flex-direction: column;
@@ -78,7 +78,7 @@ h4{
   width: 250px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   grid-template-columns: 1fr;
   
 
@@ -105,7 +105,7 @@ top: 80px;
 background-color: black;
 height: 5px;
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   top:120px;
 }
 `
@@ -129,7 +129,7 @@ flex-direction: column;
 align-items: center;
 border: solid 2px;
 border-radius: 10px;
-width: 95%;
+width: 90%;
 margin: 20px;
 padding: 20px;
 background-color: transparent;
@@ -166,7 +166,7 @@ button{
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   margin-right: 0px;
 }
 `

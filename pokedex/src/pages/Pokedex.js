@@ -25,7 +25,7 @@ header{
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   header{
     height: 120px;
     flex-direction: column;
@@ -44,7 +44,7 @@ top: 80px;
 background-color: black;
 height: 5px;
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   top:120px;
 }
 `
@@ -66,7 +66,7 @@ button{
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
   margin-right: 0px;
 }
 `
@@ -77,7 +77,7 @@ justify-content: center;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 padding-top: 30px;
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 600px) {
     grid-template-columns: 1fr;
 }
 `
