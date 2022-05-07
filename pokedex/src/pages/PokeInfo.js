@@ -133,6 +133,19 @@ width: 95%;
 margin: 20px;
 padding: 20px;
 background-color: transparent;
+
+h1{
+  @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+  font-family: 'Alfa Slab One', cursive;
+  color: blue;
+  background-color: yellow;
+  /* -webkit-text-stroke-width: 3.5px;
+  -webkit-text-stroke-color: blue; */
+  font-size: 40px;
+  padding: 0 30px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+}
 `
 
 

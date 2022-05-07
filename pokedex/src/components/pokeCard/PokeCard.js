@@ -11,6 +11,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 height: 300px;
+min-width: 230px;
 border-radius: 10px;
 margin: 30px;
 overflow: hidden;
@@ -23,6 +24,7 @@ box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.664) ;
 
 img{
   width: 80%;
+  max-width: 160px;
   height: 170px;
   margin-top: 20px;
 }
