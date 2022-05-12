@@ -1,16 +1,18 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Adernam 
+- Alex
+- João
 
-Link do Surge: www.link.com.br
+Link do Surge: https://silveirapokedex9.surge.sh/
 
 O que funciona:
-- Item 1
-- Item 2
+- Logica Global State
+- Logica Botoes remover/add
+- responsividade
+- estilização
+- Paginação 
 
 O que não funciona: 
-- Item 3
-- Item 4
+- Não é possivel atualizar a pág de Info, volta para a home page
